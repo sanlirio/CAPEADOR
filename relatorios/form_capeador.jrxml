@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Capeador" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Formularios"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EEEFF0"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#D8D8D8"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="tableDataset" uuid="f13e6d36-5148-4ecc-bbe3-3035def80980">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="Imagem" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["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"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="doctran" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0000000072"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="td_action" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT "SHNUMBER",
+                     CAST ("MATERIAL" AS INTEGER) AS "MATERIAL",
+                     "MATERIALNAME",
+                     "IDORIGEM",
+                     "ORIGEM",
+                     "VEHICLEDESCRIPTION",
+                     "IDTRANSPORTADORA",
+                     "TRANSPORTADORA",
+                     "IDMOTORISTA",
+                     "NOME",
+                     "SOBRENOME",
+                     "NOMECOMPL",
+                     "IDCENTRO",
+                     "CENTRO",
+                     "IDDEPOSITO",
+                     "DEPOSITO"
+                     "NUMNOTA",
+                      CAST ("CARGA QTDL20" AS FLOAT ) AS "CARGA QTDL20" ,
+                      CAST ("CARGA QTDL" AS FLOAT) AS "CARGA QTDL" , 
+                      CASE WHEN "DESCARGA QTDL20" IS NULL THEN 0 ELSE CAST("DESCARGA QTDL20" AS FLOAT) END AS "DESCARGA QTDL20" ,                    
+                      CASE WHEN "DESCARGA QTDL" IS NULL THEN 0 ELSE CAST ("DESCARGA QTDL" AS FLOAT) END AS "DESCARGA QTDL" ,
+                     to_date(CAST("DATACONFIRFORNECIMENTO" AS TEXT), 'YYYYMMDD') AS DATACONFIRFORNECIMENTO ,
+                     to_char(to_timestamp("HORAFORNECIMENTO", 'HH24MISS'), 'HH24:MI') AS "HORAFORNECIMENTO",
+                     "TEMPERATURA CARGA",
+                     "TEMPERATURA DESCARGA",
+                     "DENSIDADE CARGA",
+                     "DENSIDADE DESCARGA",
+                     CAST(CASE WHEN ("DESCARGA QTDL20" IS NOT NULL AND "DESCARGA QTDL20" <>0)  THEN "DESCARGA QTDL" / "DESCARGA QTDL20" ELSE 0 END AS FLOAT) AS FATOR_CONVERSAO 
+                 FROM vw_descarga_consolidada WHERE "SHNUMBER" LIKE $P{doctran}]]>
+	</queryString>
+	<field name="SHNUMBER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SHNUMBER"/>
+		<property name="com.jaspersoft.studio.field.label" value="SHNUMBER"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="MATERIAL" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="MATERIAL"/>
+		<property name="com.jaspersoft.studio.field.label" value="MATERIAL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="MATERIALNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MATERIALNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="MATERIALNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="IDORIGEM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDORIGEM"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDORIGEM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="ORIGEM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ORIGEM"/>
+		<property name="com.jaspersoft.studio.field.label" value="ORIGEM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="VEHICLEDESCRIPTION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VEHICLEDESCRIPTION"/>
+		<property name="com.jaspersoft.studio.field.label" value="VEHICLEDESCRIPTION"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="IDTRANSPORTADORA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDTRANSPORTADORA"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDTRANSPORTADORA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="TRANSPORTADORA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TRANSPORTADORA"/>
+		<property name="com.jaspersoft.studio.field.label" value="TRANSPORTADORA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="IDMOTORISTA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDMOTORISTA"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDMOTORISTA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="NOME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOME"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="SOBRENOME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SOBRENOME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SOBRENOME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="NOMECOMPL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMECOMPL"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMECOMPL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="IDCENTRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDCENTRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDCENTRO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="CENTRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CENTRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="CENTRO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="IDDEPOSITO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDDEPOSITO"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDDEPOSITO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="NUMNOTA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NUMNOTA"/>
+		<property name="com.jaspersoft.studio.field.label" value="NUMNOTA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="CARGA QTDL20" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="CARGA QTDL20"/>
+		<property name="com.jaspersoft.studio.field.label" value="CARGA QTDL20"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="CARGA QTDL" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="CARGA QTDL"/>
+		<property name="com.jaspersoft.studio.field.label" value="CARGA QTDL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="DESCARGA QTDL20" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="DESCARGA QTDL20"/>
+		<property name="com.jaspersoft.studio.field.label" value="DESCARGA QTDL20"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="DESCARGA QTDL" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="DESCARGA QTDL"/>
+		<property name="com.jaspersoft.studio.field.label" value="DESCARGA QTDL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="dataconfirfornecimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="dataconfirfornecimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataconfirfornecimento"/>
+	</field>
+	<field name="HORAFORNECIMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="HORAFORNECIMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="HORAFORNECIMENTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="TEMPERATURA CARGA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="TEMPERATURA CARGA"/>
+		<property name="com.jaspersoft.studio.field.label" value="TEMPERATURA CARGA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="TEMPERATURA DESCARGA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="TEMPERATURA DESCARGA"/>
+		<property name="com.jaspersoft.studio.field.label" value="TEMPERATURA DESCARGA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="DENSIDADE CARGA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="DENSIDADE CARGA"/>
+		<property name="com.jaspersoft.studio.field.label" value="DENSIDADE CARGA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="DENSIDADE DESCARGA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="DENSIDADE DESCARGA"/>
+		<property name="com.jaspersoft.studio.field.label" value="DENSIDADE DESCARGA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vw_descarga_consolidada"/>
+	</field>
+	<field name="fator_conversao" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="fator_conversao"/>
+		<property name="com.jaspersoft.studio.field.label" value="fator_conversao"/>
+	</field>
+	<title>
+		<band height="735" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-1" y="65" width="555" height="204" uuid="22ce1267-ee15-4e66-ae49-51ba0eacbb64"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="190" y="150" width="225" height="90" uuid="fbccaa67-90b2-4621-ad7b-0b435600c5d3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="190" y="150" width="224" height="20" uuid="f1fc7eb4-475f-46b7-a2f8-19dc22b991ad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="90" y="5" width="376" height="25" uuid="57aed2b1-4f4e-40a3-a6ad-54dae8dd4c5a">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROLE E EXPEDIÇÃO DE COMBUSTÍVEIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="70" width="65" height="15" uuid="33274f5d-5b7e-4be2-a2ff-65d452a618ed"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doc. Transp:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="415" y="-11" width="135" height="15" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center">
+				<reportElement x="0" y="0" width="69" height="65" uuid="94883631-a913-43e2-b182-ab8d77d0181e"/>
+				<imageExpression><![CDATA[net.sf.jasperreports.engine.util.JRImageLoader.getInstance(new SimpleJasperReportsContext()).loadAwtImageFromBytes(Base64.getDecoder().decode($P{Imagem}))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="360" y="-11" width="52" height="15" uuid="fda1ba94-7b55-4312-b3ac-173595c5f600"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emissão:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="40" width="424" height="25" uuid="88d52d71-748d-44a0-b1d1-b60e56f77582">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO DE ARQUEAÇÃO DE CARGAS LÍQUIDAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="90" width="65" height="15" uuid="e83b9527-dcfb-4991-a97b-5732b94c9a24"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Veículo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="108" width="85" height="15" uuid="17af5dd4-9445-4ed2-a859-630809faad3c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transportadora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="130" width="65" height="15" uuid="77cbc433-d9d9-40c8-8145-6bb39d2e2b8d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanque:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="130" width="45" height="15" uuid="20246185-3f78-4c3c-8c63-7048a2fb7e3c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Produto:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="10" y="150" width="169" height="90" uuid="f185924e-7d15-423e-96a2-c7c5a25fb52f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="150" width="157" height="15" uuid="276816e6-92cb-4d1b-a55e-60547842f476"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Temperatura e densidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="182" width="37" height="15" uuid="f80a1c76-6fbb-4aef-8497-c4659ea61277"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Temp:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="201" width="37" height="15" uuid="90a726a6-f5b4-459a-ba5b-697518e2f9c0"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Dens.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="220" width="37" height="15" uuid="efd82622-379d-427f-9279-a64a73a33e25"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fator:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="242" width="66" height="16" uuid="98758868-3afd-4570-b239-047bce598dbc"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Observações:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="154" width="50" height="15" uuid="7f6a7887-e94d-4637-ac69-1f5c5350d80a"/>
+				<text><![CDATA[Volume]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="253" y="153" width="50" height="15" uuid="82b4c156-f0ff-421c-9652-124d9ca27a67"/>
+				<text><![CDATA[Descarga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="153" width="50" height="15" uuid="9fa86d2e-427b-4f29-94ff-4d0920626351"/>
+				<text><![CDATA[Faturado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="153" width="50" height="15" uuid="73eea529-a930-426c-b6be-60b1f3c77d19"/>
+				<text><![CDATA[Diferença]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="190" y="170" width="52" height="70" uuid="c3aa5cdc-9cc8-4857-a8d8-feb68b7ccb8a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="192" y="180" width="50" height="15" uuid="ac287c1f-eac8-4eaf-963b-4955ceb71a22"/>
+				<text><![CDATA[Ambiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="197" width="50" height="15" uuid="8ae33124-8698-422c-8986-c018d6c3416e"/>
+				<text><![CDATA[20º]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="415" y="65" width="139" height="55" uuid="1138750f-e5c5-48a3-bee9-22f9000554c4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="415" y="65" width="50" height="15" uuid="c4476058-9c83-4301-8190-0f8e5129e05c"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descarga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="80" width="49" height="15" uuid="3fbfc292-7e39-4a29-8c50-a9e49d62c94e"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Data/Hora:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="415" y="95" width="139" height="35" uuid="d0f2bea8-05a0-4aea-b448-84984001ff8f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="416" y="95" width="50" height="15" uuid="a664aa99-e8af-49e8-a459-d9a3643c4920"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="112" width="65" height="15" uuid="3107b8c7-e8c3-459b-9812-6927cf888fb6"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Data/Hora:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="415" y="130" width="139" height="49" uuid="7a4a49e1-f6f6-4dab-bf72-a9d5ee2426c0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="418" y="132" width="119" height="15" uuid="f29afeb5-62d3-454c-bc14-38ead4f41b3f"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora início:___:___]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="157" width="119" height="15" uuid="45e8e984-8c50-43a7-af66-085692664e8a"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora final:___:___]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-1" y="269" width="200" height="51" uuid="760a69e4-c5dd-4074-9066-041239d57dc2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="68" y="269" width="65" height="15" uuid="655e7084-013c-40f5-893a-cd4a04bdf280"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Motorista]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="199" y="269" width="119" height="51" uuid="67c65a39-8bf5-4744-a130-f1edbec33371"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="209" y="269" width="110" height="15" uuid="0e904e22-f903-432f-9259-56747a1ca487"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Operador/Conferência]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="319" y="269" width="120" height="51" uuid="968d3e94-3094-48a2-8ab9-0397d7c2e5f1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="324" y="270" width="110" height="15" uuid="09ca6d46-5a59-4009-9d33-bb8a12149ed6"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Operador/Descarga]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="437" y="269" width="117" height="51" uuid="fc6e3b31-70b1-458a-a9c0-561647b5eaa6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="437" y="270" width="110" height="30" uuid="767e173e-ea5d-485f-bee3-9e9b3b9a9167"/>
+				<textElement textAlignment="Left">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Operador/Conf. Vazio Saída Liberada]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="311" y="180" width="48" height="14" uuid="6d7a65ce-cd98-4266-afbc-98c181dfac6d"/>
+				<textFieldExpression><![CDATA[($F{CARGA QTDL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="198" width="48" height="14" uuid="22f42aaa-cbc7-4093-8dd6-278aa562b81d"/>
+				<textFieldExpression><![CDATA[($F{CARGA QTDL20})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="242" width="356" height="16" uuid="41c458a1-fce5-4b8f-9248-4fc68d3c236b"/>
+				<textFieldExpression><![CDATA["NF: " + $F{NUMNOTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="70" width="72" height="15" uuid="bfcee629-2972-4d4c-b092-afc814c15393"/>
+				<textFieldExpression><![CDATA[$F{SHNUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="130" width="203" height="14" uuid="b6d3f0b1-74bc-4d81-91cc-61701d976dcf"/>
+				<textFieldExpression><![CDATA[$F{MATERIALNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="130" width="54" height="15" uuid="7cdb70fe-24d6-40d9-86f4-22974338c9f1"/>
+				<textFieldExpression><![CDATA[$F{MATERIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="90" width="246" height="15" uuid="58a8dc74-c1be-40a7-9e1f-37e9ef90865c"/>
+				<textFieldExpression><![CDATA[$F{VEHICLEDESCRIPTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="108" width="233" height="15" uuid="af88850f-d8f9-436d-94cb-4f3434f3fada"/>
+				<textFieldExpression><![CDATA[$F{TRANSPORTADORA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="130" width="40" height="15" uuid="25643a6d-d2cc-475a-a754-b064dae209ee"/>
+				<textFieldExpression><![CDATA[$F{IDDEPOSITO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="180" width="54" height="15" uuid="d620dd46-cf4f-4edb-a392-8f1e6d828ecc"/>
+				<textFieldExpression><![CDATA[($F{TEMPERATURA DESCARGA})==null ? "Pendente": ($F{TEMPERATURA DESCARGA}).setScale(2, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="201" width="54" height="15" uuid="c9af6294-eea6-47b6-b2fc-c728640ba7c7"/>
+				<textFieldExpression><![CDATA[($F{DENSIDADE DESCARGA})==null? "Pendente" : ($F{DENSIDADE DESCARGA}).setScale(4, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="285" width="180" height="30" uuid="ea836685-bae3-4a20-9efb-88f87452c3e8"/>
+				<textFieldExpression><![CDATA[$F{NOMECOMPL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="253" y="180" width="48" height="14" uuid="d08d756e-bb46-470b-96df-f260ae19acab"/>
+				<textFieldExpression><![CDATA[($F{DESCARGA QTDL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="253" y="198" width="48" height="14" uuid="b0b17fd1-1e91-4d98-bd9e-fd3e47bf2e4a"/>
+				<textFieldExpression><![CDATA[($F{DESCARGA QTDL20})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="220" width="54" height="15" uuid="f74b5dc4-216a-4f9e-ba0f-c62870acb6f5"/>
+				<textFieldExpression><![CDATA[($F{DESCARGA QTDL} != null && $F{DESCARGA QTDL}.doubleValue() != 0) 
+    ? new BigDecimal($F{DESCARGA QTDL20}.doubleValue() / $F{DESCARGA QTDL}.doubleValue()).setScale(4, java.math.RoundingMode.HALF_UP) 
+    : "Pendente"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="365" y="181" width="48" height="14" uuid="23994314-8501-4095-a50f-5f659e7d1127"/>
+				<textFieldExpression><![CDATA[$F{DESCARGA QTDL} ==0 ? "Pendente" :
+$F{DESCARGA QTDL}-($F{CARGA QTDL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="365" y="198" width="48" height="14" uuid="e6eacd0c-69b4-478b-accd-5082c1851804"/>
+				<textFieldExpression><![CDATA[$F{DESCARGA QTDL20} ==0? "Pendente":
+$F{DESCARGA QTDL20} -$F{CARGA QTDL20}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="466" y="79" width="87" height="15" uuid="89d2fbbe-3644-4940-90f7-1aaec5c0af1c"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date($F{dataconfirfornecimento}.getTime())) + " "+$F{HORAFORNECIMENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="112" width="87" height="15" uuid="33794ec3-2b56-4843-ae41-a5b43f47fcc4"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date($F{dataconfirfornecimento}.getTime())) + " "+$F{HORAFORNECIMENTO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="360" width="552" height="1" uuid="293d5334-f3c5-474c-897f-21d3911402fd"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="-3" y="460" width="555" height="204" uuid="3474d760-a4dc-432b-ada4-c60a67c25b04"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="188" y="545" width="225" height="90" uuid="034f8401-cd26-403e-af3d-9bb8faa9e781"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="188" y="545" width="224" height="20" uuid="4358678c-e83c-47cc-ac53-eb84beb15f3d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="88" y="400" width="376" height="25" uuid="b67db767-7140-4ba3-8f64-73cd254eedfe">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROLE E EXPEDIÇÃO DE COMBUSTÍVEIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="465" width="65" height="15" uuid="c7710f42-a959-40c6-847e-ffbb4eaf7f78"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doc. Transp:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="413" y="384" width="135" height="15" uuid="26797273-0e76-45ca-bc9d-202a37436049"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center">
+				<reportElement x="-2" y="395" width="69" height="65" uuid="5384c20f-f18c-4f1d-87af-81cd9c13254e"/>
+				<imageExpression><![CDATA[net.sf.jasperreports.engine.util.JRImageLoader.getInstance(new SimpleJasperReportsContext()).loadAwtImageFromBytes(Base64.getDecoder().decode($P{Imagem}))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="358" y="384" width="52" height="15" uuid="f341b586-7973-4d49-82cc-da8816fec7a6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emissão:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="435" width="424" height="25" uuid="8f748bc0-f54b-4949-9f8a-40b1e69a2faa">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO DE ARQUEAÇÃO DE CARGAS LÍQUIDAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="485" width="65" height="15" uuid="fa3ab94a-c550-4dcf-b9f2-84a73aea613d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Veículo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="503" width="85" height="15" uuid="272aae43-6692-466a-9e21-d3ed91e368ae"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transportadora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="525" width="65" height="15" uuid="36ad6f9b-67fe-41cb-934c-4f3d2682d782"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanque:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="108" y="525" width="45" height="15" uuid="56f95f9f-6ebf-43b3-a6f0-2a41a658ec21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Produto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="637" width="66" height="16" uuid="507db0b1-27d4-4a74-8339-8105e8f27196"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Observações:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="549" width="50" height="15" uuid="3cad3cfa-2fe3-417f-a549-4899c5a273de"/>
+				<text><![CDATA[Volume]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="548" width="50" height="15" uuid="cd383b51-739b-48d2-b5a8-2b40f394b788"/>
+				<text><![CDATA[Descarga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="548" width="50" height="15" uuid="d3c974df-b275-4071-818f-4fc509ff4ff1"/>
+				<text><![CDATA[Faturado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="548" width="50" height="15" uuid="ab508053-00b4-4a28-a2f7-0eb673a9ee02"/>
+				<text><![CDATA[Diferença]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="188" y="565" width="52" height="70" uuid="0121ed46-2f7f-44b9-9ac7-fc9483a6478e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="190" y="575" width="50" height="15" uuid="2660ee46-e2cf-452d-adf2-0e1bc513ec66"/>
+				<text><![CDATA[Ambiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="592" width="50" height="15" uuid="2585f377-243a-436c-a30a-7e34c2eea857"/>
+				<text><![CDATA[20º]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="413" y="460" width="139" height="55" uuid="5a3aa236-2cad-4f35-84dd-e4c180f0a974"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="413" y="460" width="50" height="15" uuid="53d660a9-567d-4c7b-97bd-bb30cc53ff5f"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descarga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="475" width="49" height="15" uuid="90f7d5db-2d7c-4df6-b33a-306985aaa5fa"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Data/Hora:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="413" y="490" width="139" height="35" uuid="57105965-d6eb-4717-a49a-ada5ba8c95a4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="414" y="490" width="50" height="15" uuid="9d38ebdf-15b4-46fd-a0d0-80c58f4279c4"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="507" width="65" height="15" uuid="6c185f51-0d8c-4619-add5-152c0e0b7953"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Data/Hora:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="413" y="525" width="139" height="49" uuid="8b4aef7c-b206-499e-b0a6-3baebe0fd507"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="416" y="527" width="119" height="15" uuid="2f4868de-573a-4d88-a912-c0ed7f218e4a"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora início:___:___]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="552" width="119" height="15" uuid="39bfa8b6-599d-4c97-85fe-d53287428962"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora final:___:___]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-3" y="664" width="200" height="51" uuid="4d330450-bf66-4e89-9586-17e1d66a9b2f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="66" y="664" width="65" height="15" uuid="412f1fc3-6f9c-43dd-9d70-29cd781ca890"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Motorista]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="197" y="664" width="119" height="51" uuid="85ebd500-3c6a-4c4d-b4bd-501a58a1fbe0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="207" y="664" width="110" height="15" uuid="be92c74a-6e9a-43b1-838b-29b275494cd3"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Operador/Conferência]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="317" y="664" width="120" height="51" uuid="d3e89666-0906-4d01-8696-7ab9bd574975"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="322" y="665" width="110" height="15" uuid="a71f6b67-1f71-482a-94a4-7d1216ab75dc"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Operador/Descarga]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="435" y="664" width="117" height="51" uuid="87079e31-526d-451a-b351-176f30d9c466"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="435" y="665" width="110" height="30" uuid="5609f90b-07c6-428b-bfeb-c79275bba906"/>
+				<textElement textAlignment="Left">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Operador/Conf. Vazio Saída Liberada]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="309" y="575" width="48" height="14" uuid="6447a768-1eef-480a-93cf-7f19975b2b01"/>
+				<textFieldExpression><![CDATA[($F{CARGA QTDL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="593" width="48" height="14" uuid="340ccda8-ef63-464f-bb08-e1a7380803bf"/>
+				<textFieldExpression><![CDATA[($F{CARGA QTDL20})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="637" width="356" height="16" uuid="9358249c-b1ef-4861-be62-1a0071d83cfd"/>
+				<textFieldExpression><![CDATA["NF: " + $F{NUMNOTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="465" width="72" height="15" uuid="724f39be-689a-4446-a78c-9817c92278c2"/>
+				<textFieldExpression><![CDATA[$F{SHNUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="525" width="203" height="14" uuid="878bb276-97de-4508-a391-cee8e8666a2a"/>
+				<textFieldExpression><![CDATA[$F{MATERIALNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="525" width="54" height="15" uuid="2fe7799f-ba51-4086-a408-d935937583dd"/>
+				<textFieldExpression><![CDATA[$F{MATERIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="485" width="246" height="15" uuid="32e6ebf4-3d31-4954-8237-f4f6b626572b"/>
+				<textFieldExpression><![CDATA[$F{VEHICLEDESCRIPTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="503" width="233" height="15" uuid="5eecbae5-a003-486d-8803-c80cda904fb7"/>
+				<textFieldExpression><![CDATA[$F{TRANSPORTADORA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="525" width="40" height="15" uuid="37915d7b-4b16-4bae-8412-c049501bfc7c"/>
+				<textFieldExpression><![CDATA[$F{IDDEPOSITO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="680" width="180" height="30" uuid="0f26bb22-599f-4e17-89ef-1b7cc76b4015"/>
+				<textFieldExpression><![CDATA[$F{NOMECOMPL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="575" width="48" height="14" uuid="d5a3529d-0097-4878-afc8-70483014108c"/>
+				<textFieldExpression><![CDATA[($F{DESCARGA QTDL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="593" width="48" height="14" uuid="6d1f11a9-e1e1-4524-8ce2-6602f4558d49"/>
+				<textFieldExpression><![CDATA[($F{DESCARGA QTDL20})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="464" y="474" width="87" height="15" uuid="79d62930-8ac0-4307-bb04-68d66eb9bce2"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date($F{dataconfirfornecimento}.getTime())) + " "+$F{HORAFORNECIMENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="507" width="87" height="15" uuid="bb29848d-0ef4-4a9b-8884-41c502c9feec"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date($F{dataconfirfornecimento}.getTime())) + " "+$F{HORAFORNECIMENTO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="53" y="165" width="57" height="15" uuid="dee0d5f2-b073-4057-8f43-3fdbcf7d44db"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Carga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="165" width="64" height="15" uuid="bcda7fde-11bb-4cd4-91b9-122d88a68fd2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Descarga]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="56" y="180" width="54" height="15" uuid="f6232d68-c7dc-493e-8721-25a88c9fdcc7"/>
+				<textFieldExpression><![CDATA[($F{TEMPERATURA CARGA}).setScale(2, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="201" width="54" height="15" uuid="e2b6afb8-af57-4a42-84c5-943447238b96"/>
+				<textFieldExpression><![CDATA[($F{DENSIDADE CARGA}).setScale(4, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="220" width="54" height="15" uuid="c2f3b2d3-8f6b-48ce-8d43-e8635ad0622f"/>
+				<textFieldExpression><![CDATA[($F{CARGA QTDL} != null && $F{CARGA QTDL}.doubleValue() != 0) 
+    ? new BigDecimal($F{CARGA QTDL20}.doubleValue() / $F{CARGA QTDL}.doubleValue()).setScale(4, java.math.RoundingMode.HALF_UP) 
+    : BigDecimal.ZERO]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="596" width="54" height="15" uuid="aaec3ca9-e5c2-4edd-b30c-ca4a8cd3eec6"/>
+				<textFieldExpression><![CDATA[($F{DENSIDADE DESCARGA})==null? "Pendente" : ($F{DENSIDADE DESCARGA}).setScale(4, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="545" width="169" height="90" uuid="61ff0db7-aecc-4299-8073-1668cdcd29db"/>
+			</rectangle>
+			<textField>
+				<reportElement x="110" y="615" width="54" height="15" uuid="772d6307-5b82-4c27-b624-3e1b13a739bd"/>
+				<textFieldExpression><![CDATA[($F{DESCARGA QTDL} != null && $F{DESCARGA QTDL}.doubleValue() != 0) 
+    ? new BigDecimal($F{DESCARGA QTDL20}.doubleValue() / $F{DESCARGA QTDL}.doubleValue()).setScale(4, java.math.RoundingMode.HALF_UP) 
+    : "Pendente"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="577" width="37" height="15" uuid="12bdf257-ac2d-48b7-8606-9635e9a3fb2e"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Temp:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="575" width="54" height="15" uuid="5989c9ab-244f-4e4e-ba1d-f72582229238"/>
+				<textFieldExpression><![CDATA[($F{TEMPERATURA DESCARGA})==null ? "Pendente": ($F{TEMPERATURA DESCARGA}).setScale(2, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="560" width="64" height="15" uuid="290ff21c-9346-45eb-9acc-ef122dd02736"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Descarga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="596" width="37" height="15" uuid="550d6b15-c9d3-4eee-ad05-8bef8d099acf"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Dens.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="560" width="57" height="15" uuid="b9185358-6372-4712-b1ed-88151a221141"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Carga]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="46" y="615" width="54" height="15" uuid="c378af82-ae71-4b19-8909-57e87d49cdce"/>
+				<textFieldExpression><![CDATA[($F{CARGA QTDL} != null && $F{CARGA QTDL}.doubleValue() != 0) 
+    ? new BigDecimal($F{CARGA QTDL20}.doubleValue() / $F{CARGA QTDL}.doubleValue()).setScale(4, java.math.RoundingMode.HALF_UP) 
+    : BigDecimal.ZERO]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="46" y="596" width="54" height="15" uuid="3865fafd-ef67-4d49-880b-e0c12017330c"/>
+				<textFieldExpression><![CDATA[($F{DENSIDADE CARGA}).setScale(4, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="46" y="575" width="54" height="15" uuid="d0352c7a-d50e-4c21-adb5-7475a95a28b6"/>
+				<textFieldExpression><![CDATA[($F{TEMPERATURA CARGA}).setScale(2, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="545" width="157" height="15" uuid="d9efa424-bf4e-4c6e-b7ce-50032e16a2fc"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Temperatura e densidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="615" width="37" height="15" uuid="32f1c6e2-b0b1-403f-8825-887afa9fc4a6"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fator:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="596" width="54" height="15" uuid="5d72f25b-b697-40d8-8d62-adefaa365156"/>
+				<textFieldExpression><![CDATA[($F{DENSIDADE DESCARGA})==null? "Pendente" : ($F{DENSIDADE DESCARGA}).setScale(4, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="575" width="48" height="14" uuid="2a82081a-d23f-4621-9b0e-1daf159b477a"/>
+				<textFieldExpression><![CDATA[$F{DESCARGA QTDL} ==0 ? "Pendente" :
+$F{DESCARGA QTDL}-($F{CARGA QTDL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="592" width="48" height="14" uuid="d465bbaf-a8ba-4e13-ad8d-f700e95110f2"/>
+				<textFieldExpression><![CDATA[$F{DESCARGA QTDL20} ==0? "Pendente":
+$F{DESCARGA QTDL20} -$F{CARGA QTDL20}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<lastPageFooter>
+		<band height="33"/>
+	</lastPageFooter>
+</jasperReport>
