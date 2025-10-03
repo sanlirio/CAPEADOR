@@ -30,28 +30,24 @@ st.subheader(f"Gerador de capeador", divider=True)
 
 
 def add_action_buttons(df):
-    df_display = df.copy()
+    df_display = df.copy().reset_index(drop=True)  # garante índices posicionais
 
-    # Inicializar estado
+    # Estado selecionado
     if "selected_dt" not in st.session_state:
         st.session_state["selected_dt"] = None
 
-    # Criar coluna "Ação"
-    if "Ação" not in df_display.columns:
-        df_display["Ação"] = False
-
-    # Reordenar colunas
-    colunas = ["Ação"] + [col for col in df_display.columns if col != "Ação"]
-    df_display = df_display[colunas]
-
-    # Marcar apenas a linha selecionada
+    # Coluna Ação inicializada
     df_display["Ação"] = False
     if st.session_state["selected_dt"] is not None:
-        mask = df_display['SHNUMBER'] == st.session_state["selected_dt"]
+        mask = df_display["SHNUMBER"] == st.session_state["selected_dt"]
         if mask.any():
             df_display.loc[mask, "Ação"] = True
 
-    # Renderizar editor
+    # Reordenar colunas
+    colunas = ["Ação"] + [c for c in df_display.columns if c != "Ação"]
+    df_display = df_display[colunas]
+
+    # Renderiza data_editor (mesmo key)
     edited_df = st.data_editor(
         df_display,
         column_config={
@@ -60,7 +56,7 @@ def add_action_buttons(df):
                 help="Clique para gerar o capeador desta linha",
                 default=False,
             ),
-            "SHNUMBER": "DT",
+           "SHNUMBER": "DT",
             "MATERIAL": "CÓD PRODUTO",
             "MATERIALDESCRIPTION": "PRODUTO",
             "IDORIGEM": None,
@@ -89,7 +85,7 @@ def add_action_buttons(df):
             "TEMPERATURA DESCARGA": "TEMPERATURA DESCARGA",
             "DENSIDADE CARGA": "DENSIDADE CARGA",
             "DENSIDADE DESCARGA": "DENSIDADE DESCARGA",
-            "FATOR_CONVERSAO": "FATOR CONVERSÃO"
+            "fator_conversao": "FATOR CONVERSÃO"
         },
         disabled=df_display.columns.difference(["Ação"]),
         hide_index=True,
@@ -97,25 +93,28 @@ def add_action_buttons(df):
         key="data_editor",
     )
 
-    # Verificar linha clicada
+    # pega índices (labels) das linhas marcadas
     clicked_rows = edited_df.index[edited_df["Ação"]].tolist()
-    
     if clicked_rows:
-        selected_idx = clicked_rows[-1]
-        selected_shnumber = df_display.iloc[selected_idx]["SHNUMBER"]
-        
-        # Se a seleção mudou, atualizar e rerun
+        selected_label = clicked_rows[-1]                     # label/índice da última clicada
+        selected_shnumber = edited_df.at[selected_label, "SHNUMBER"]
+
+        # Se mudou a seleção, atualiza e força rerun limpando cache do data_editor
         if st.session_state["selected_dt"] != selected_shnumber:
             st.session_state["selected_dt"] = selected_shnumber
+            # limpar cache do data_editor para que na próxima render só a linha selecionada apareça marcada
+            st.session_state.pop("data_editor", None)
             st.rerun()
-        
-        # Processar o relatório apenas se for um clique válido
-        dadosEdit = df.iloc[selected_idx]
-        st.session_state["doctran"] = dadosEdit["SHNUMBER"]
-        st.session_state["td_action"] = dadosEdit["IDORIGEM"]
 
-        st.success(f"✅ Capeador gerado para DT: {dadosEdit['SHNUMBER']}")
-        rel_form()
+        # Se não mudou (já era a mesma), processa o relatório
+        else:
+            # Busca a linha original no df pelo SHNUMBER (mais robusto que usar index)
+            dadosEdit = df[df["SHNUMBER"] == selected_shnumber].iloc[0]
+            st.session_state["doctran"] = dadosEdit["SHNUMBER"]
+            st.session_state["td_action"] = dadosEdit["IDORIGEM"]
+
+            st.success(f"✅ Capeador gerado para DT: {dadosEdit['SHNUMBER']}")
+            rel_form()
 
 
 def lista_principal():
